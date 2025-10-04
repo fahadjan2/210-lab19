@@ -79,10 +79,15 @@ int main() {
             nextMovie = true;
         }
         else { //Is a review, populates review
-            
             rating = (rand() % 5) + 1;
             NewMovie->addReview(rating, line);
         }
+    }
+
+    cout << "Displaying Movies: " << endl;
+    for (int i = 0; i < movieList.size(); i++) {
+        movieList[i]->getReviews();
+        delete movieList[i];
     }
 
     delete NewMovie;
