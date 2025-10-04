@@ -14,6 +14,9 @@ class Movie {
     private: 
     string title;
     Movie * reviews;
+
+    public:
+    Movie(string t, Movie r) {title = t; reviews = r;}
 };
 
 void output(MovieReviews *);
@@ -30,19 +33,25 @@ int main() {
     vector<Movie> movieList;
 
     //Movie populating
+    MovieReviews * head = nullptr;
+    Movie * NewMovie = nullptr;
+
     string line;
     string title;
-    int count = 0;
-    MovieReviews * head = nullptr;
-    MovieReviews * current = nullptr;
-
+    int rating;
+    bool nextMovie = true;
+    
     while (getline(file, line)) {
-        if (count == 0) { //First line
+        if (nextMovie) { //First line
             title = line;
+            rating = rand() % 100;
+            nextMovie = false;
         }  
-        int rating = rand() % 100;
 
-        current->comment 
+        
+        if (line == "") {
+            nextMovie = true;
+        }
     }
 
     MovieReviews * head = nullptr;
