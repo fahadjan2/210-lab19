@@ -18,17 +18,12 @@ class Movie {
     MovieReviews * head;
 
     public:
-    Movie(string t) {title = t;}
+    Movie(string t) {title = t; head = nullptr;}
 
     //Adds a review
     void addReview(double r, string c) {
         MovieReviews * newReview = new MovieReviews;
-        if (!head) {
-            newReview->next = nullptr;
-        }
-        else {
-            newReview->next = head;
-        }
+        newReview->next = head;
         newReview->rating = r;
         newReview->comment = c;
         head = newReview;
@@ -41,7 +36,7 @@ class Movie {
         return;
         }
 
-        cout << "Current Title: " << title;
+        cout << "\nCurrent Title: " << title << endl;
         MovieReviews * current = head;
         int count = 1;
         while (current) {
@@ -89,6 +84,4 @@ int main() {
         movieList[i]->getReviews();
         delete movieList[i];
     }
-
-    delete NewMovie;
 }
