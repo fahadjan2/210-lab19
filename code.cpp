@@ -8,15 +8,17 @@ using namespace std;
 struct MovieReviews {
     double rating;
     string comment;
+
+    MovieReviews * next;
 };
 
 class Movie {
     private: 
     string title;
-    Movie * reviews;
+    Movie * head;
 
     public:
-    Movie(string t, Movie r) {title = t; reviews = r;}
+    Movie(string t) {title = t;}
 };
 
 void output(MovieReviews *);
@@ -34,6 +36,7 @@ int main() {
 
     //Movie populating
     MovieReviews * head = nullptr;
+    MovieReviews * current = nullptr;
     Movie * NewMovie = nullptr;
 
     string line;
@@ -42,15 +45,19 @@ int main() {
     bool nextMovie = true;
     
     while (getline(file, line)) {
-        if (nextMovie) { //First line
+        if (nextMovie) { //First line / or any new movie title
             title = line;
             rating = rand() % 100;
             nextMovie = false;
         }  
-
-        
-        if (line == "") {
+        else if (line == "") { //Means to move to the next movie, populates current movie
             nextMovie = true;
+        }
+        else { //Is a review, populates review
+            if (!head) {
+                current->comment = line;
+                head = 
+            }
         }
     }
 
